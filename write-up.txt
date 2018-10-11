@@ -5,7 +5,7 @@ Hasil Latihan :
 ● Melakukan looping dengan Thymeleaf
 >> Mengimplementasi th:each dan iterationStatus 
 ● Melakukan cek conditional dengan Thymeleaf
->> Mengimplementasikan th:if pada thymelef 
+>> Mengimplementasikan th:if pada thymeleaf 
 ● Menggunakan static file
 >> Membuat static file dari css dan js dengan template bootstrap
 ● Mengimplementasi fragment
