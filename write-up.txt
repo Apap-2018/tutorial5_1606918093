@@ -1,0 +1,24 @@
+FAIZAH AFIFAH
+1606918093 - APAP C
+
+Hasil Latihan :
+● Melakukan looping dengan Thymeleaf
+>> Mengimplementasi th:each dan iterationStatus 
+● Melakukan cek conditional dengan Thymeleaf
+>> Mengimplementasikan th:if pada thymelef 
+● Menggunakan static file
+>> Membuat static file dari css dan js dengan template bootstrap
+● Mengimplementasi fragment
+>> Mempelajari tentang th:fragment yang berguna sebagai code reuse 
+untuk html agar tampilan konsisten
+● Mengimplementasi specific error handler
+>> Membuat file berjudul 404.html yang otomatis melemparkan page ke halaman
+ini jika terjadi eror "404" 
+● Mengimplementasi form handler untuk field multivalue
+>> Membuat form handler "delete flight" dalam multiple checkbox
+
+Latihan
+1. Pada latihan 1, diminta untuk membuat fragment pada header agar menjadi dinamis.
+Caranya adalah dengan menambahkan <a th:text="${title}" ... pada baris fragment.html, 
+kemudian nantinya pada masing-masing controller yang akan merender page ditambahkan 
+model.attribute("title","[nama_page]"). 

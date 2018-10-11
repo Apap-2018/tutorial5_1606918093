@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>View Pilot</title>
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+
+	<h1>Data Pilot</h1>
+	<h2 th:text="'License Number: ' + ${datapilot.licenseNumber}" />
+	<h2 th:text="'Name			: ' + ${datapilot.name}" />
+	<h2 th:text="'Flyhour		: ' + ${datapilot.flyHour}" />
+	<h2 th:if="${datapilot.flyHour} >= 100">Status: Pilot Senior</h2>
+	<h2 th:unless="${datapilot.flyHour} >= 100">Status: Pilot Junior</h2>
+		
+	<form th:action="@{/pilot/update/} + ${datapilot.licenseNumber}">
+		<button type="submit">Update Pilot</button>
+	</form>
+	<form th:action="@{'/pilot/delete/' + ${datapilot.licenseNumber}}">
+		<button type-"submit">Delete Pilot</button>
+	</form>
+	<br><br>
+	
+	<h1>List Flight Experience</h1>
+	<form th:action ="@{/flight/delete}" th:object="${datapilot}" method="POST">
+		<table border="I">
+			<caption>Flights</caption>
+			<thead>
+				<tr>
+					<th style="text-align: center">No.</th>
+					<th style="text-align: center">Flight Number</th>
+					<th style="text-align: center">Origin</th>
+					<th style="text-align: center">Destination</th>
+					<th style="text-align: center">Time</th>
+					<th style="text-align: center">Action</th>
+					<th style="text-align: center">Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="dataflight, iterationStatus : *{pilotFlight}">
+					<td th:text="${iterationStatus.count}"></td>
+					
+					<td th:text="${dataflight.flightNumber}"></td>
+					<td th:text="${dataflight.origin}"></td>
+					<td th:text="${dataflight.destination}"></td>
+					<td th:text="${dataflight.time}"></td>
+					<td>
+						<input type="checkbox" th:field="*{pilotFlight}" th:value="${dataflight.id}"/>
+						<label th:for="${#ids.prev('pilotFlight')}">Delete</label>
+					</td>
+					<td><a th:href="@{/flight/view?id={id}(id=${dataflight.id})}">See Details</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<button type="submit" class="btn btn-danger">Delete Selected Flight</button>
+	</form>
+	
+<form th:action="@{/flight/add/} + ${datapilot.licenseNumber}">
+	<button value="submit">Add Flight</button>
+</form>
+
+		
+		
+</body>
+
+</html>
